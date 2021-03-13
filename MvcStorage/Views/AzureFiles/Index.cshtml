@@ -1,0 +1,60 @@
+﻿@model List<String>
+<h1>Azure Files</h1>
+
+<a asp-controller="AzureFiles" asp-action="UploadFile">Upload File Azure</a>
+
+@*<table class="table table-info table-sm">
+    <thead>
+        <tr>
+            <th>Nombre del fichero</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (String f in Model)
+        {
+            <tr>
+                <td>@f</td>
+                <td>
+                    <a asp-controller="AzureFiles"
+                       asp-action="Index"
+                       asp-route-filename="@f"
+                       class="btn btn-success">
+                        Read File
+                    </a>
+                    <a asp-controller="AzureFiles"
+                       asp-action="DeleteFile"
+                       asp-route-filename="@f"
+                       class="btn btn-danger">
+                        Delete file
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<p style="color: blue">@ViewData ["content"]</p>*@
+
+<ul class="list-group">
+    @foreach (String f in Model)
+    {
+        <li class="list-group-item">
+            @f
+            <a asp-controller="AzureFiles"
+               asp-action="Index"
+               asp-route-filename="@f"
+               class="btn btn-success">
+                Read File
+            </a>
+            <a asp-controller="AzureFiles"
+               asp-action="DeleteFile"
+               asp-route-filename="@f"
+               class="btn btn-danger">
+                Delete file
+            </a>
+        </li>
+    }
+</ul>
+<br />
+<p style="color: blue">@ViewData["content"]</p>

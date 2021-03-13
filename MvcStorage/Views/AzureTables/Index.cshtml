@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MvcStorage.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+    List<String> empresas = ViewData["empresas"] as List<String>;
+}
+
+<h1>Client List</h1>
+
+<p>
+    <a asp-action="CreateCliente">Create New</a>
+</p>
+@if (empresas != null)
+{
+    <form method="post">
+        <select name="empresa" class="form-control">
+            @foreach (String emp in empresas)
+            {
+                <option value="@emp">@emp</option>
+            }
+        </select><br />
+        <button type="submit" class="btn btn-outline-success">Mostrar clientes</button>
+    </form>
+    <br />
+    <br />
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
